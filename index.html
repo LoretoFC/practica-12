@@ -8,154 +8,109 @@ Hora: 8:00 a 9:00 -->
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cálculo de Nómina - Control de Trabajadores</title>
+    <title>Sueldos de trabajadores</title>
     <style>
-
-      /* Colores usados */
-      :root {
-        --primary: #b91c1c;       
-        --primary-hover: #991b1b; 
-        --accent: #dc2626;        
-        --bg: #f8fafc;            
-        --surface: #ffffff;
-        --border: #fca5a5;        
-        --border-subtle: #fee2e2;
-        --text: #0f172a;
-      }
-
       body {
         margin: 0;
-        padding: 40px 15px;
-        background-color: var(--bg);
-        color: var(--text);
-        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        padding: 30px 15px;
+        background: #fdf2f2;
+        color: #222;
+        font-family: Arial, Helvetica, sans-serif;
       }
 
-      /* Contenedor del formulario con acento superior */
-      .form {
+      h2 {
+        text-align: center;
+        color: #991b1b;
+        margin-bottom: 25px;
+      }
+
+      form {
         display: flex;
         flex-direction: column;
         width: 100%;
-        max-width: 850px;
-        margin: 0 auto 35px auto;
-        padding: 24px;
-        background: var(--surface);
-        border: 1px solid var(--border-subtle);
-        border-top: 4px solid var(--primary);
-        border-radius: 10px;
-        box-shadow: 0 4px 14px rgba(185, 28, 28, 0.06);
-        box-sizing: border-box;
-      }
-
-      .form h2 {
-        margin-top: 0;
-        margin-bottom: 18px;
-        font-size: 20px;
-        color: var(--primary);
+        max-width: 650px;
+        margin: 0 auto 40px auto;
+        padding: 20px;
+        background: #fff;
+        border: 2px solid #b91c1c;
       }
 
       label {
-        font-weight: 600;
-        font-size: 14px;
-        margin-bottom: 6px;
+        font-size: 15px;
+        font-weight: bold;
+        margin-bottom: 5px;
       }
 
       input {
-        font-size: 15px;
-        padding: 10px 14px;
-        margin-bottom: 16px;
-        border: 1.5px solid #e2e8f0;
-        border-radius: 6px;
-        outline: none;
-        transition: border-color 0.2s, box-shadow 0.2s;
-      }
-
-      input:focus {
-        border-color: var(--accent);
-        box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
+        font-size: 14px;
+        padding: 8px;
+        margin-bottom: 15px;
+        border: 1px solid #999;
       }
 
       button {
         align-self: flex-start;
-        padding: 11px 24px;
-        background-color: var(--primary);
+        padding: 10px 20px;
+        background-color: #b91c1c;
         color: #fff;
         font-size: 15px;
-        font-weight: 600;
-        border-radius: 6px;
+        font-weight: bold;
         border: none;
         cursor: pointer;
-        transition: background-color 0.2s ease-in-out;
       }
 
       button:hover {
-        background-color: var(--primary-hover);
-      }
-
-      /* Contenedor responsivo de la tabla */
-      .table-wrapper {
-        width: 100%;
-        max-width: 850px;
-        margin: 0 auto;
-        overflow-x: auto;
-        border-radius: 10px;
-        border: 1px solid var(--border-subtle);
-        box-shadow: 0 4px 14px rgba(185, 28, 28, 0.05);
-        background: var(--surface);
+        background-color: #7f1d1d;
       }
 
       table {
         width: 100%;
+        max-width: 900px;
+        margin: 0 auto;
         border-collapse: collapse;
-        font-size: 14px;
+        background: #fff;
       }
 
       th,
       td {
-        padding: 12px 14px;
-        text-align: left;
-        border-bottom: 1px solid #f1f5f9;
+        padding: 8px 10px;
+        border: 1px solid #777;
+        text-align: center;
+        font-size: 14px;
       }
 
       th {
-        background-color: var(--primary);
-        color: #ffffff;
-        font-weight: 600;
-        text-transform: uppercase;
-        font-size: 12px;
-        letter-spacing: 0.04em;
+        background-color: #b91c1c;
+        color: #fff;
       }
 
-      /* Filas alternadas con un toque rojizo suave */
+      #tbody tr:nth-child(odd) {
+        background-color: #fff;
+      }
+
       #tbody tr:nth-child(even) {
-        background-color: #fff5f5;
+        background-color: #fca5a5;
       }
 
-      #tbody tr:hover {
-        background-color: #fee2e2;
-      }
-
-      td img {
-        width: 55px;
-        height: 55px;
-        object-fit: cover;
-        border-radius: 6px;
+      img {
+        width: 60px;
+        height: 60px;
         display: block;
-        border: 1px solid #e2e8f0;
+        margin: 0 auto;
       }
     </style>
   </head>
   <body>
-    <!-- Formulario de captura -->
-    <form class="form">
-      <h2>Registro de Colaborador</h2>
+    <h2>Control de Sueldos y Empleados</h2>
 
-      <label for="nombre">Nombre completo:</label>
+    <!-- Formulario de entrada -->
+    <form class="form">
+      <label for="nombre">Nombre del trabajador:</label>
       <input
         name="nombre"
         id="nombre"
         type="text"
-        placeholder="Ej. Francisco Loreto"
+        placeholder="Ej. Juan Pérez"
         autocomplete="off"
         required
       />
@@ -165,7 +120,7 @@ Hora: 8:00 a 9:00 -->
         name="rfc"
         id="rfc"
         type="text"
-        placeholder="Ej. CALF050629XXX"
+        placeholder="RFC del empleado"
         required
       />
 
@@ -174,115 +129,109 @@ Hora: 8:00 a 9:00 -->
         name="antiguedad"
         id="antiguedad"
         type="number"
-        min="0"
-        placeholder="Ej. 10"
+        placeholder="Ej. 5"
         required
       />
 
-      <label for="dias">Días laborados (quincena):</label>
+      <label for="dias">Días trabajados en la quincena:</label>
       <input
         name="dias"
         id="dias"
         type="number"
-        min="1"
-        max="15"
         placeholder="Ej. 15"
         required
       />
 
-      <button type="submit">Registrar e Imprimir</button>
+      <button type="submit">Guardar Datos</button>
     </form>
 
-    <!-- Tabla de resultados -->
-    <div class="table-wrapper">
-      <table id="tabla">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Nombre</th>
-            <th>Días Trab.</th>
-            <th>Antigüedad</th>
-            <th>Bono Aplica</th>
-            <th>Bono</th>
-            <th>Sueldo Total</th>
-            <th>Fotografía</th>
-          </tr>
-        </thead>
-        <tbody id="tbody"></tbody>
-      </table>
-    </div>
+    <!-- Tabla para mostrar los resultados -->
+    <table id="tabla">
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>Nombre</th>
+          <th>Días Trab.</th>
+          <th>Antigüedad</th>
+          <th>Bono</th>
+          <th>Monto Bono</th>
+          <th>Sueldo Total</th>
+          <th>Foto</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
 
     <script>
-      // 1. Solicitud de cantidad de filas al cargar la página
-      const lineas = Number(prompt("¿Cuántos registros deseas capturar en la tabla?:"));
+      // Solicitar el número de filas a inicializar
+      const lineas = Number(prompt("Ingresa el número de filas para la tabla:"));
       const $tbody = document.getElementById("tbody");
 
-      // 2. Generación inicial de la estructura de filas vacías
+      // Generar filas vacías en la tabla
       for (let i = 1; i <= lineas; i++) {
         $tbody.innerHTML += `
           <tr name="persona-${i}">
             <td>${i}</td>
-            <td>—</td>
-            <td>—</td>
-            <td>—</td>
-            <td>—</td>
-            <td>—</td>
-            <td>—</td>
-            <td>—</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
           </tr>`;
       }
 
       const $form = document.querySelector(".form");
-      let idActual = 1;
+      let id = 1;
 
-      // 3. Captura y cálculo de sueldo al enviar el formulario
+      // Procesar el envío de datos
       $form.addEventListener("submit", (evt) => {
         evt.preventDefault();
 
-        // Buscar la fila correspondiente al índice actual
-        const $fila = $tbody.querySelector(`[name="persona-${idActual}"]`);
+        // Localizar la fila correspondiente
+        const $fila = $tbody.querySelector(`[name="persona-${id}"]`);
         if (!$fila) {
-          alert("Aviso: Ya se han ocupado todos los renglones inicializados.");
+          alert("Ya completaste todas las filas disponibles.");
           return;
         }
 
-        // Obtener valores ingresados en el formulario
-        const formData = new FormData($form);
-        const nombre = formData.get("nombre");
-        const antiguedad = Number(formData.get("antiguedad"));
-        const diasTrabajados = Number(formData.get("dias"));
-        const rfc = formData.get("rfc").trim();
+        // Extraer valores del formulario
+        let form = new FormData($form);
+        let nombre = form.get("nombre");
+        let antiguedad = Number(form.get("antiguedad"));
+        let dias = Number(form.get("dias"));
+        let rfc = form.get("rfc");
 
-        // Parámetros salariales base
-        const sueldoBaseQuincenal = 15000;
-        const bonoAntiguedad = 1000;
-        const sueldoPorDia = sueldoBaseQuincenal / 15;
-        let sueldoFinal = sueldoPorDia * diasTrabajados;
+        // Cálculo de sueldo quincenal y validación de bono
+        let sueldo_base = 15000;
+        let bono = 1000;
+        let tiene_bono = "No";
+        let sueldo_quincena = (sueldo_base / 15) * dias;
 
-        // Regla: A partir de 10 años de servicio recibe bono
-        const recibeBono = antiguedad >= 10;
-        if (recibeBono) {
-          sueldoFinal += bonoAntiguedad;
+        if (antiguedad >= 10) {
+          tiene_bono = "Sí";
+          sueldo_quincena = sueldo_quincena + bono;
         }
 
-        // Asignación de datos a las celdas de la fila activa
-        $fila.cells[0].textContent = idActual;
+        // Asignar valores calculados a las celdas
+        $fila.cells[0].textContent = id;
         $fila.cells[1].textContent = nombre;
-        $fila.cells[2].textContent = diasTrabajados;
+        $fila.cells[2].textContent = dias;
         $fila.cells[3].textContent = `${antiguedad} años`;
-        $fila.cells[4].textContent = recibeBono ? "Sí" : "No";
-        $fila.cells[5].textContent = recibeBono ? `$${bonoAntiguedad.toFixed(2)}` : "$0.00";
-        $fila.cells[6].textContent = `$${sueldoFinal.toFixed(2)}`;
+        $fila.cells[4].textContent = tiene_bono;
+        $fila.cells[5].textContent = tiene_bono === "Sí" ? `$${bono}` : "$0";
+        $fila.cells[6].textContent = `$${sueldo_quincena.toFixed(2)}`;
 
-        // Creación y renderizado de la imagen basada en el RFC ingresado
+        // Crear e insertar elemento de imagen con el nombre del RFC
         const $foto = document.createElement("img");
         $foto.src = `${rfc}.jpeg`;
-        $foto.alt = `Foto de ${nombre}`;
+        $foto.alt = "Foto empleado";
         $fila.cells[7].replaceChildren($foto);
 
-        // Reset del formulario para la siguiente captura e incremento de contador
+        // Reiniciar formulario e incrementar contador
         $form.reset();
-        idActual++;
+        id += 1;
       });
     </script>
   </body>
